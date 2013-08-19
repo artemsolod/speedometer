@@ -7,23 +7,36 @@
 //
 
 #import "WHTViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface WHTViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *speedLabel;
+@property (weak, nonatomic) IBOutlet UIButton *switcher;
 @end
 
 @implementation WHTViewController
 
-- (void)viewDidLoad
+- (IBAction)switchSpeedometer:(UIButton *)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    sender.selected = !sender.selected;
+    self.speedLabel.text = [NSString stringWithFormat:@"Hold on"];
 }
 
-- (void)didReceiveMemoryWarning
+-(void) viewDidLoad
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidLoad];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.delegate = self;
+    self.location = [[CLLocation alloc] init];
+
+}
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    if (self.switcher.selected)
+    {
+        self.location = locations.lastObject;
+        self.speedLabel.text = [NSString stringWithFormat:@"%f", self.location.speed];
+    }
 }
 
 @end
