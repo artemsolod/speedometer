@@ -19,7 +19,14 @@
 - (IBAction)switchSpeedometer:(UIButton *)sender
 {
     sender.selected = !sender.selected;
-    self.speedLabel.text = [NSString stringWithFormat:@"Hold on"];
+    if (self.switcher.selected)
+    {
+        self.speedLabel.text = [NSString stringWithFormat:@"Hold on"];
+    }
+    else
+    {
+        self.speedLabel.text = [NSString stringWithFormat:@"No good"];
+    }
 }
 
 -(void) viewDidLoad
@@ -31,6 +38,7 @@
     self.location = [[CLLocation alloc] init];
 
 }
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     if (self.switcher.selected)
     {

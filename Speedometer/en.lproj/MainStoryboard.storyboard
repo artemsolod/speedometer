@@ -1,26 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="WHTViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-vX-kkj">
+                                <items>
+                                    <navigationItem title="Speedometer" id="tRF-ak-QEC"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVn-wI-5sY">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="FI4-8U-p5V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="Stop"/>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchSpeedometer:" destination="2" eventType="touchUpInside" id="7WH-PM-57T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Speed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyO-VX-JdQ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="0cs-R2-Aas"/>
+                                    <constraint firstAttribute="height" constant="78" id="s7i-fd-DqE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No good" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gv-W8-kCM">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="Mer-pP-ISE"/>
+                                    <constraint firstAttribute="height" constant="241" id="pjf-YI-URN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="56"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Gv-W8-kCM" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="2Tu-Db-QsX"/>
+                            <constraint firstItem="kyO-VX-JdQ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7wP-8k-QZH"/>
+                            <constraint firstItem="6OP-vX-kkj" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="DLJ-Tl-ecQ"/>
+                            <constraint firstItem="6OP-vX-kkj" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="GsN-gw-zL7"/>
+                            <constraint firstItem="kyO-VX-JdQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="65" id="Otc-Hi-RlG"/>
+                            <constraint firstAttribute="bottom" secondItem="LVn-wI-5sY" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hz7-Y6-bwg"/>
+                            <constraint firstItem="6OP-vX-kkj" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="sQi-rI-c6M"/>
+                            <constraint firstItem="5Gv-W8-kCM" firstAttribute="top" secondItem="3" secondAttribute="top" constant="133" id="vBl-Ob-6U4"/>
+                            <constraint firstItem="6OP-vX-kkj" firstAttribute="centerX" secondItem="LVn-wI-5sY" secondAttribute="centerX" type="default" id="viI-Ia-yfE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="speedLabel" destination="5Gv-W8-kCM" id="h50-BV-23L"/>
+                        <outlet property="switcher" destination="LVn-wI-5sY" id="t7I-Tg-TwT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="176" y="12"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="WHTViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WHTViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="switchSpeedometer:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="switcher" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
